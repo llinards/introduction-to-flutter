@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PrimaryBtn extends StatelessWidget {
-  const PrimaryBtn(this.text, {super.key});
+  const PrimaryBtn(this.text, this.onPressed, {super.key});
 
   final String text;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         textStyle: const TextStyle(

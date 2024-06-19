@@ -10,6 +10,7 @@ class MainTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
+      textAlign: TextAlign.center,
       style: GoogleFonts.lato(
         color: Colors.white,
         fontSize: 25,

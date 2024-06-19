@@ -5,9 +5,10 @@ import 'questions_summary.dart';
 import 'main_title.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen(this.finalAnswers, {super.key});
+  const ResultsScreen(this.finalAnswers, this.resetQuiz, {super.key});
 
   final List<String> finalAnswers;
+  final void Function() resetQuiz;
 
   List<Map<String, Object>> getSummaryData() {
     final List<Map<String, Object>> summary = [];
@@ -50,7 +51,7 @@ class ResultsScreen extends StatelessWidget {
             PrimaryBtn(
               'Restart Quiz',
               Icons.refresh,
-              () {},
+              resetQuiz,
             ),
           ],
         ),

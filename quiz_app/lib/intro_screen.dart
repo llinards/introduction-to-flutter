@@ -18,7 +18,7 @@ class IntroScreen extends StatelessWidget {
           const SizedBox(height: 30),
           const MainTitle('Learn Flutter'),
           const SizedBox(height: 30),
-          PrimaryBtn('Start Quiz', startQuiz),
+          PrimaryBtn('Start Quiz', Icons.play_arrow, startQuiz),
         ],
       ),
     );

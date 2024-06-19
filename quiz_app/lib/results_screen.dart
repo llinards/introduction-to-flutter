@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'data/questions.dart';
 import 'primary_btn.dart';
 import 'questions_summary.dart';
+import 'main_title.dart';
 
 class ResultsScreen extends StatelessWidget {
   const ResultsScreen(this.finalAnswers, {super.key});
@@ -15,7 +16,7 @@ class ResultsScreen extends StatelessWidget {
       summary.add({
         'question_index': i,
         'question': questions[i].question,
-        'correct_answer': questions[i].question[0],
+        'correct_answer': questions[i].answers[0],
         'user_answer': finalAnswers[i],
       });
     }
@@ -37,9 +38,8 @@ class ResultsScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'You answered $correctQuestions out of $totalQuestions questions correctly.',
-            ),
+            MainTitle(
+                'You answered $correctQuestions out of $totalQuestions questions correctly.'),
             const SizedBox(
               height: 30,
             ),
@@ -49,6 +49,7 @@ class ResultsScreen extends StatelessWidget {
             ),
             PrimaryBtn(
               'Restart Quiz',
+              Icons.refresh,
               () {},
             ),
           ],

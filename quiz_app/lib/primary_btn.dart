@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class PrimaryBtn extends StatelessWidget {
-  const PrimaryBtn(this.text, this.onPressed, {super.key});
+  const PrimaryBtn(this.text, this.btnIcon, this.onPressed, {super.key});
 
   final String text;
+  final IconData btnIcon;
   final void Function() onPressed;
 
   @override
@@ -17,7 +18,8 @@ class PrimaryBtn extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      icon: const Icon(Icons.play_arrow),
+      // icon: const Icon(Icons.play_arrow),
+      icon: Icon(btnIcon),
       label: Text(text),
     );
   }

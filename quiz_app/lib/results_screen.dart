@@ -24,6 +24,16 @@ class ResultsScreen extends StatelessWidget {
     return summary;
   }
 
+  String setEmoji(int correctQuestions) {
+    if (correctQuestions == questions.length) {
+      return '🥳';
+    } else if (correctQuestions >= questions.length / 2) {
+      return '😎';
+    } else {
+      return '😢';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final summaryData = getSummaryData();
@@ -31,6 +41,7 @@ class ResultsScreen extends StatelessWidget {
     final correctQuestions = summaryData.where((data) {
       return data['correct_answer'] == data['user_answer'];
     }).length;
+    final emojiStatus = setEmoji(correctQuestions);
 
     return SizedBox(
       width: double.infinity,
@@ -40,7 +51,7 @@ class ResultsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             MainTitle(
-                'You answered $correctQuestions out of $totalQuestions questions correctly.'),
+                'You answered $correctQuestions out of $totalQuestions questions correctly. $emojiStatus'),
             const SizedBox(
               height: 30,
             ),

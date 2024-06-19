@@ -8,7 +8,7 @@ class SecondaryBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
+    return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
@@ -19,7 +19,7 @@ class SecondaryBtn extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      label: Text(text),
+      child: Text(text),
     );
   }
 }

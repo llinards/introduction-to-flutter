@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'data/questions.dart';
 import 'primary_btn.dart';
-import 'questions_summary.dart';
+import 'questions_summary/questions_summary.dart';
 import 'main_title.dart';
 
 class ResultsScreen extends StatelessWidget {

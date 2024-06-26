@@ -33,9 +33,16 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseModal() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
-      builder: (ctx) => const NewExpense(),
+      builder: (ctx) => NewExpense(_addExpense),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registerdExpanses.add(expense);
+    });
   }
 
   @override

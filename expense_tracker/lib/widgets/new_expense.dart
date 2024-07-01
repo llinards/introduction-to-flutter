@@ -1,6 +1,7 @@
 import 'package:expense_tracker/models/expense.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/cupertino.dart';
 
 final formatter = DateFormat.yMMMd();
 
@@ -38,22 +39,23 @@ class _NewExpenseState extends State<NewExpense> {
     if (_titleController.text.trim().isEmpty ||
         amountIsInvalid ||
         _selectedDate == null) {
-      showDialog(
+      showCupertinoDialog<void>(
         context: context,
-        builder: (ctx) {
-          return AlertDialog(
-            title: const Text('Invalid input'),
-            content: const Text('Please enter data'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(ctx);
-                },
-                child: const Text('Okay'),
-              ),
-            ],
-          );
-        },
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: const Text('Oops! 😕'),
+          content: const Text('Please check your input data.'),
+          actions: <CupertinoDialogAction>[
+            CupertinoDialogAction(
+              /// This parameter indicates this action is the default,
+              /// and turns the action's text to bold text.
+              isDefaultAction: true,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Ok'),
+            ),
+          ],
+        ),
       );
       return;
     }
@@ -147,13 +149,19 @@ class _NewExpenseState extends State<NewExpense> {
                 },
               ),
               const Spacer(),
-              TextButton(
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              CupertinoButton(
                 child: const Text('Cancel'),
                 onPressed: () {
                   Navigator.pop(context);
                 },
               ),
-              OutlinedButton(
+              const Spacer(),
+              CupertinoButton.filled(
                 onPressed: _submitExpenseData,
                 child: const Text('Save'),
               ),

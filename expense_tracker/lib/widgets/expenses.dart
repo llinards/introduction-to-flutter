@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 import '../models/expense.dart';
@@ -30,6 +31,12 @@ class _ExpensesState extends State<Expenses> {
       amount: 450.00,
       date: DateTime.now(),
       category: Category.work,
+    ),
+    Expense(
+      title: 'Airplane tickets',
+      amount: 950.00,
+      date: DateTime.now(),
+      category: Category.travel,
     ),
   ];
 
@@ -90,6 +97,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
+          Chart(expenses: _registerdExpanses),
           // const Text('Chart'),
           Expanded(child: mainContent),
         ],

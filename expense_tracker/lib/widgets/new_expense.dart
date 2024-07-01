@@ -79,8 +79,9 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
+      padding: const EdgeInsets.fromLTRB(20, 100, 20, 20),
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
             controller: _titleController,

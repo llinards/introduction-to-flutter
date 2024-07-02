@@ -38,10 +38,35 @@ class _ExpensesState extends State<Expenses> {
       date: DateTime.now(),
       category: Category.travel,
     ),
+    Expense(
+      title: 'New Phone',
+      amount: 799.99,
+      date: DateTime.now(),
+      category: Category.leisure,
+    ),
+    Expense(
+      title: 'New Laptop',
+      amount: 1299.99,
+      date: DateTime.now(),
+      category: Category.work,
+    ),
+    Expense(
+      title: 'New Headphones',
+      amount: 299.99,
+      date: DateTime.now(),
+      category: Category.leisure,
+    ),
+    Expense(
+      title: 'Food Delivery',
+      amount: 100.99,
+      date: DateTime.now(),
+      category: Category.food,
+    ),
   ];
 
   void _openAddExpenseModal() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpense(_addExpense),
@@ -77,6 +102,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
     Widget mainContent = const Center(
       child: Text('No expenses found.'),
     );
@@ -95,13 +122,24 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Chart(expenses: _registerdExpanses),
-          // const Text('Chart'),
-          Expanded(child: mainContent),
-        ],
-      ),
+      body: width < 600
+          ? Column(
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                Chart(expenses: _registerdExpanses),
+                Expanded(child: mainContent),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(
+                  child: Chart(expenses: _registerdExpanses),
+                ),
+                Expanded(child: mainContent),
+              ],
+            ),
     );
   }
 }

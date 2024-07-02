@@ -15,6 +15,7 @@ class ExpensesList extends StatelessWidget {
       itemCount: expenses.length,
       itemBuilder: (ctx, index) => Dismissible(
         key: ValueKey(expenses[index]),
+        direction: DismissDirection.endToStart,
         onDismissed: (direction) {
           onRemoveExpense(expenses[index]);
         },

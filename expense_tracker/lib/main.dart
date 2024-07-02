@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'widgets/expenses.dart';
 
-var kColorScheme = ColorScheme.fromSeed(seedColor: Colors.red);
+var kColorScheme = ColorScheme.fromSeed(seedColor: Colors.orange);
 
 void main() {
   runApp(
@@ -9,8 +9,8 @@ void main() {
       theme: ThemeData().copyWith(
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
-          backgroundColor: kColorScheme.onPrimaryContainer,
-          foregroundColor: kColorScheme.primaryContainer,
+          backgroundColor: kColorScheme.primaryContainer,
+          foregroundColor: kColorScheme.onPrimaryContainer,
         ),
         cardTheme: const CardTheme().copyWith(
           color: kColorScheme.secondaryContainer,

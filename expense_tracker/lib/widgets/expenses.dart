@@ -103,7 +103,6 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
     Widget mainContent = const Center(
       child: Text('No expenses found.'),
     );
@@ -114,7 +113,7 @@ class _ExpensesState extends State<Expenses> {
     }
     return Scaffold(
       appBar: AppBar(
-        title: const Text('💵 My Expenses 💵'),
+        title: const Text('My Expenses'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),

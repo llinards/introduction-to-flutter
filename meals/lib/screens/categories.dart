@@ -14,31 +14,28 @@ class CategoriesScreen extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => MealsScreen(category.title, meals)),
+          builder: (context) =>
+              MealsScreen(title: category.title, meals: meals)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Pick Your Category'),
-        ),
-        body: GridView(
-          padding: const EdgeInsets.all(24),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
+    return GridView(
+      padding: const EdgeInsets.all(24),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 3 / 2,
+        crossAxisSpacing: 20,
+        mainAxisSpacing: 20,
+      ),
+      children: [
+        for (final category in availableCategories)
+          CategoryGridItem(
+            category,
+            () => _selectCategory(context, category),
           ),
-          children: [
-            for (final category in availableCategories)
-              CategoryGridItem(
-                category,
-                () => _selectCategory(context, category),
-              ),
-          ],
-        ));
+      ],
+    );
   }
 }
